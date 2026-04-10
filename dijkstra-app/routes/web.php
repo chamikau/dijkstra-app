@@ -2,6 +2,10 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GraphController;
 
+Route::get('/', function () {
+    return view('login'); 
+});
+
 Route::get('/register', [AuthController::class, 'showRegister']);
 Route::post('/register', [AuthController::class, 'register']);
 
