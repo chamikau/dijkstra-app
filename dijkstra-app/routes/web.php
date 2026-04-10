@@ -1,20 +1,14 @@
 <?php
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GraphController;
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+Route::get('/register', [AuthController::class, 'showRegister']);
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+Route::get('/home', [GraphController::class, 'index'])->middleware('auth');
+Route::post('/shortest-path', [GraphController::class, 'calculate'])->middleware('auth');
