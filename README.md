@@ -14,8 +14,8 @@ This is a simple Laravel project that implements the **Dijkstra Algorithm** to f
 
 ## Tech Stack
 
-- Laravel (PHP Framework)
+- Laravel
 - Bootstrap 5
-- MySQL (optional for auth)
+- MySQL 
 - Blade Templates
 
